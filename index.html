@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PaperLab Notes</title><link rel="stylesheet" href="style.css"></head><body>
+<div id="lock"><div class="card"><h1>PaperLab</h1><p id="lockmsg">Create your account to unlock your notebooks.</p>
+<input id="u" placeholder="Username" autocomplete="username"><input id="p" type="password" placeholder="Password" autocomplete="current-password">
+<button id="go">Unlock</button><div id="err"></div></div></div>
+<div id="app" hidden>
+<header><select id="nb"></select><button id="addnb" title="New notebook">+ Notebook</button><nav id="secs"></nav><button id="addsec">+ Section</button>
+<span class="sp"></span><button class="mode on" data-m="notes">Notes</button><button class="mode" data-m="science">Science</button><button class="mode" data-m="prep">Prep</button><button id="out" title="Sign out"></button></header>
+<main id="notes"><aside><input id="q" placeholder="Search all notes"><div id="pages"></div><button id="addpg">+ Page</button>
+<div class="io"><button id="exp">Export</button><label class="btn">Import<input id="imp" type="file" accept=".json" hidden></label></div></aside>
+<section id="paper"><div class="tools">
+<button data-c="bold"><b>B</b></button><button data-c="italic"><i>I</i></button><button data-c="underline"><u>U</u></button>
+<button data-c="hiliteColor" data-v="#e8e8e8">Mark</button><button data-c="formatBlock" data-v="h2">H</button><button data-c="insertUnorderedList">List</button>
+<button id="todo">To-do</button><button id="tbl">Table</button><button id="date">Date</button><label class="btn">Image<input id="img" type="file" accept="image/*" hidden></label>
+<select id="tpl"><option value="plain">Blank</option><option value="lined">Lined</option><option value="dots">Dotted</option><option value="grid">Grid</option></select>
+<span class="sp"></span><button id="pen">Pen</button><button id="era">Erase</button><button id="clr">Clear ink</button><button id="del">Delete page</button></div>
+<div class="scroll"><div id="sheet"><h1 id="title" contenteditable data-ph="Untitled"></h1><div id="body" contenteditable></div><canvas id="ink"></canvas></div></div></section></main>
+<main id="science" hidden><h2>Science mode</h2><p>Search for models and diagrams, then click one to add it to your current page.</p>
+<form id="sf"><input id="sq" placeholder="e.g. DNA double helix model"><button>Search</button></form><div id="chips"></div><div id="res"></div></main>
+<main id="prep" hidden><h2>Science Bowl prep <small>High school</small></h2><div id="pbar"></div><div id="quiz"></div></main>
+</div><script src="app.js"></script></body></html>
