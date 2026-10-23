@@ -9,11 +9,11 @@ const sha=async t=>[...new Uint8Array(await crypto.subtle.digest("SHA-256",new T
 const acct=()=>load("pl_user",null);
 function lockInit(){const a=acct();$("#lockmsg").textContent=a?"Welcome back. Sign in to unlock.":"Create your account to unlock your notebooks.";$("#go").textContent=a?"Unlock":"Create account";if(sessionStorage.pl_in){unlock()}}
 $("#go").onclick=async()=>{const u=$("#u").value.trim(),p=$("#p").value;$("#err").textContent="";
- if(!u)return$("#err").textContent="Enter a username.";
- if(await sha(p)!==HASH)return$("#err").textContent="Wrong password.";
- const a=acct();if(a&&a.u.toLowerCase()!==u.toLowerCase())return$("#err").textContent="That username does not match this account.";
+ if(!u)return $("#err").textContent="Enter a username.";
+ if(await sha(p)!==HASH)return $("#err").textContent="Wrong password.";
+ const a=acct();if(a&&a.u.toLowerCase()!==u.toLowerCase())return $("#err").textContent="That username does not match this account.";
  if(!a)localStorage.setItem("pl_user",JSON.stringify({u}));sessionStorage.pl_in=1;unlock()};
-$("#p").onkeydown=e=>e.key==="Enter"&&$("#go").click();
+$("#p").onkeydown=e=>{if(e.key==="Enter")$("#go").click()};
 function unlock(){$("#lock").hidden=true;$("#app").hidden=false;$("#out").textContent="Sign out ("+acct().u+")";render()}
 $("#out").onclick=()=>{delete sessionStorage.pl_in;location.reload()};
 /* ---- render ---- */
